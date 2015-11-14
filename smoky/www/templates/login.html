@@ -1,0 +1,24 @@
+<ion-view title="SMOKY">
+    <ion-content class="has-header">
+
+              <form>
+                  <ion-list>
+                      <label class="item item-input">
+                          <span class="input-label">Username</span>
+                          <input type="text" placeholder="enter your username..." ng-model="data.username">
+                      </label>
+                      <label class="item item-input">
+                          <span class="input-label">Password</span>
+                          <input type="password" placeholder="enter your password..." ng-model="data.password">
+                      </label>
+                  </ion-list>
+                  <button class="button button-stable button-block" ng-click="loginEmail()">Login</button>
+              </form>
+
+      <h4>New to SMOKY?</h4>
+      <a href = "#/signup" class="button button-positive" style="width: 100%; margin: 20px 0;">
+        Register
+      </a>
+
+    </ion-content>
+</ion-view>

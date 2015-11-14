@@ -1,0 +1,31 @@
+<ion-view view-title="Friends">
+  <ion-content>
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="email to search..." ng-model= "data.emailToSearch">
+      </label>
+      <button class="button button-small" ng-click="searchFriend()">
+        Search
+      </button>
+    </div>
+
+
+    <ion-item class="item-avatar" ng-show="foundFriend">
+      <img src= "img/blank-image.png" />
+      <h2>{{friend.get("firstname") +' '+ friend.get("lastname")}}
+      <button style="float:right;" class="button button-medium" ng-click="addFriend()"
+       ng-show="friendAdded == false">
+        Add
+      </button>
+      <button style="float:right;" class="button button-balanced"
+       ng-show="friendAdded == true" >
+        Added
+      </button>
+      </h2>
+    </ion-item>
+
+
+
+
+  </ion-content>
+</ion-view>
