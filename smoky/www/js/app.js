@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ion-autocomplete'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $location) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -27,6 +27,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     Parse.initialize("CafHVr2BKB0gxka3A88VonegjFn5JJHRwT3eQcOl", "Xrt7svHE59g4Awphs5gabDKf14QEIww01SEZEplM");
 
   });
+
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -66,6 +68,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl'
       }
+    },
+    //if the user is not logged in, don't allow to visit this page
+    onEnter: function($state, Auth){
+        if(!Auth.isLoggedIn()){
+           $state.go('login');
+        }
     }
   })
 
@@ -76,6 +84,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         templateUrl: 'templates/friends.html',
         controller: 'FriendsCtrl'
       }
+    },
+    //if the user is not logged in, don't allow to visit this page
+    onEnter: function($state, Auth){
+        if(!Auth.isLoggedIn()){
+           $state.go('login');
+        }
     }
   })
 
@@ -86,6 +100,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           templateUrl: 'templates/newSmoke.html',
           controller: 'NewSmoke'
         }
+      },
+      //if the user is not logged in, don't allow to visit this page
+      onEnter: function($state, Auth){
+          if(!Auth.isLoggedIn()){
+             $state.go('login');
+          }
       }
     })
 
@@ -96,6 +116,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         templateUrl: 'templates/tab-account.html',
         controller: 'AccountCtrl'
       }
+    },
+    //if the user is not logged in, don't allow to visit this page
+    onEnter: function($state, Auth){
+        if(!Auth.isLoggedIn()){
+           $state.go('login');
+        }
     }
   });
 

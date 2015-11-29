@@ -1,4 +1,4 @@
-var app = angular.module('starter.services', []);
+var app = angular.module('starter.services', ['ngCookies']);
 
 
 
@@ -23,4 +23,27 @@ app.service('dataService', function() {
     });
   };
 
+});
+
+
+app.factory('Auth', function ($cookieStore) {
+   var _user = $cookieStore.get('starter.user');
+   var setUser = function (user) {
+      _user = user;
+      $cookieStore.put('starter.user', _user);
+   };
+
+   return {
+      setUser: setUser,
+      isLoggedIn: function () {
+         return _user ? true : false;
+      },
+      getUser: function () {
+         return _user;
+      },
+      logout: function () {
+         $cookieStore.remove('starter.user');
+         _user = null;
+      }
+   };
 });

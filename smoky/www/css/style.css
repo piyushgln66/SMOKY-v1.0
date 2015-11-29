@@ -2,3 +2,7 @@
 .popup-body, .popup-head {
   background-color: white;
 }
+
+.item-content {
+    padding-right: 15px !important;
+}

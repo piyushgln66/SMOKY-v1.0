@@ -1,8 +1,54 @@
 <ion-view view-title="Account">
   <ion-content>
-    <div class="row" style="margin-top:200px;">
+        <ion-list>
+            <label class="item item-input">
+                <span class="input-label">Firstname</span>
+                <span class="input-label" ng-show="!data.isEditable">{{data.user.get("firstname")}}</span>
+                <input type="text" placeholder="your firstname" ng-show="data.isEditable" ng-model="data.firstname">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Lastname</span>
+                <span class="input-label" ng-show="!data.isEditable">{{data.user.get("lastname")}}</span>
+                <input type="text" placeholder="your lastname" ng-show="data.isEditable" ng-model="data.lastname">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Email</span>
+                <span class="input-label">{{data.user.get("email")}}</span>
+            </label>
+        </ion-list>
+        <div class="row">
+         <div class="col text-center">
+        <button class="button button-positive button-medium" style="width: 100%" ng-click="editDetails()"
+         ng-show="!data.isEditable">
+          Edit Details
+        </button>
+        <button class="button button-positive button-medium" style="width: 48%" ng-click="save()"
+         ng-show="data.isEditable">
+          Save
+        </button>
+        <button class="button button-positive button-medium" style="width: 48%" ng-click="cancel()"
+         ng-show="data.isEditable">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
      <div class="col text-center">
-       <button class="button button-large" ng-click="logout()" >
+       <button class="button button-positive button-medium"  style="width: 100%" ng-click="logout()"
+       ng-show="!data.isEditable">
+         Change Password
+       </button>
+  </div>
+</div>
+
+
+
+
+    <div class="row">
+     <div class="col text-center">
+       <button class="button button-assertive button-medium"  style="width: 100%" ng-click="logout()"
+        ng-show="!data.isEditable" >
          Logout
        </button>
      </div>

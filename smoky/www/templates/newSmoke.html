@@ -1,12 +1,24 @@
-<ion-view view-title="New Smoke">
-  <ion-content>
-    <div class="row" style="margin-top:200px;">
-     <div class="col text-center">
-       <button class="button button-large" ng-click="logout()" >
-         JJIKI
-       </button>
-     </div>
+<ion-view>
+  <ion-content class="has-header">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-ios-body placeholder-icon"></i>
+        <input ion-autocomplete type="text" placeholder="type friend's names" readonly="readonly" class="ion-autocomplete" autocomplete="off" ng-model="data.selectedFriends" item-value-key="get('SecondPerson')" items-method="callbackMethod(query)" item-view-value-key="name"
+        multiple-select="true" />
+      </label>
     </div>
+
+    <div class="list list-inset" style="margin-top: 100px;">
+      <label class="item item-input">
+        <input type="text" placeholder="Number of cigarettes" ng-model="data.cigarettes">
+      </label>
+      <button class="button button-positive" style="margin-top: 100px; width: 100%"
+       ng-click="addNewSmoke()">
+        Light it
+      </button>
+    </div>
+
+
 
   </ion-content>
 </ion-view>
