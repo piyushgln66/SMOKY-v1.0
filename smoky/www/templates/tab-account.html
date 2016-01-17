@@ -1,57 +1,67 @@
 <ion-view view-title="Account">
   <ion-content>
-        <ion-list>
-            <label class="item item-input">
-                <span class="input-label">Firstname</span>
-                <span class="input-label" ng-show="!data.isEditable">{{data.user.get("firstname")}}</span>
-                <input type="text" placeholder="your firstname" ng-show="data.isEditable" ng-model="data.firstname">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Lastname</span>
-                <span class="input-label" ng-show="!data.isEditable">{{data.user.get("lastname")}}</span>
-                <input type="text" placeholder="your lastname" ng-show="data.isEditable" ng-model="data.lastname">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Email</span>
-                <span class="input-label">{{data.user.get("email")}}</span>
-            </label>
-        </ion-list>
-        <div class="row">
-         <div class="col text-center">
-        <button class="button button-positive button-medium" style="width: 100%" ng-click="editDetails()"
-         ng-show="!data.isEditable">
+    <ion-list ng-show="!data.editPassword">
+      <label class="item item-input">
+        <span class="input-label">Firstname</span>
+        <span class="input-label" ng-show="!data.isEditable">{{data.user.get("firstname")}}</span>
+        <input type="text" placeholder="your firstname" ng-show="data.isEditable" ng-model="data.firstname">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Lastname</span>
+        <span class="input-label" ng-show="!data.isEditable">{{data.user.get("lastname")}}</span>
+        <input type="text" placeholder="your lastname" ng-show="data.isEditable" ng-model="data.lastname">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Email</span>
+        <span class="input-label">{{data.user.get("email")}}</span>
+      </label>
+    </ion-list>
+
+    <ion-list ng-show="data.editPassword">
+      <label class="item item-input">
+        <span class="input-label">New Password</span>
+        <input type="password" placeholder="new password" ng-model="data.newPassword">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Confirm Password</span>
+        <input type="password" placeholder="confirm password" ng-model="data.confirmPassword">
+      </label>
+    </ion-list>
+
+
+    <div class="row">
+      <div class="col text-center">
+        <button class="button button-positive button-medium" style="width: 100%" ng-click="editDetails()" ng-show="!data.isEditable && !data.editPassword">
           Edit Details
         </button>
-        <button class="button button-positive button-medium" style="width: 48%" ng-click="save()"
-         ng-show="data.isEditable">
+        <button class="button button-positive button-medium" style="width: 48%" ng-click="save()" ng-show="data.isEditable || data.editPassword">
           Save
         </button>
-        <button class="button button-positive button-medium" style="width: 48%" ng-click="cancel()"
-         ng-show="data.isEditable">
+        <button class="button button-positive button-medium" style="width: 48%" ng-click="cancel()" ng-show="data.isEditable || data.editPassword">
           Cancel
         </button>
       </div>
     </div>
 
     <div class="row">
-     <div class="col text-center">
-       <button class="button button-positive button-medium"  style="width: 100%" ng-click="logout()"
-       ng-show="!data.isEditable">
-         Change Password
-       </button>
-  </div>
-</div>
+      <div class="col text-center">
+        <button class="button button-positive button-medium" style="width: 100%" ng-click="changePassword()" ng-show="!data.isEditable && !data.editPassword">
+          Change Password
+        </button>
+      </div>
+    </div>
+
+
 
 
 
 
     <div class="row">
-     <div class="col text-center">
-       <button class="button button-assertive button-medium"  style="width: 100%" ng-click="logout()"
-        ng-show="!data.isEditable" >
-         Logout
-       </button>
-     </div>
+      <div class="col text-center">
+        <button class="button button-assertive button-medium" style="width: 100%" ng-click="logout()" ng-show="!data.isEditable && !data.editPassword">
+          Logout
+        </button>
+      </div>
     </div>
 
   </ion-content>

@@ -16,12 +16,16 @@ angular.module('starter.controllers')
 
   $scope.searchFriend = function() {
 
+    var emailToSearch = $scope.data.emailToSearch;
+    if (Parse.User.current().get("email") === emailToSearch) {
+      $scope.showAlert("Error", "Do not enter your own email");
+      return;
+    }
     // show a loading screen
     $ionicLoading.show({
       template: 'Loading...'
     });
 
-    var emailToSearch = $scope.data.emailToSearch;
     var query = new Parse.Query("_User");
     query.equalTo("email", emailToSearch);
     query.find({
@@ -34,7 +38,9 @@ angular.module('starter.controllers')
           $scope.showAlert("Error", "No friend found with this email");
           return;
         }
+
         $scope.friend = results[0];
+
         $scope.foundFriend = true;
         //now check if the friend is already added or not
         var query = new Parse.Query("UserRelation");

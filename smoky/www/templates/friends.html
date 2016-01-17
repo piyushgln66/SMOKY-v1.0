@@ -14,11 +14,11 @@
       <img src= "img/blank-image.png" />
       <h2>{{friend.get("firstname") +' '+ friend.get("lastname")}}
       <button style="float:right;" class="button button-medium" ng-click="addFriend()"
-       ng-show="friendAdded == false">
+       ng-show="!friendAdded">
         Add
       </button>
       <button style="float:right;" class="button button-balanced"
-       ng-show="friendAdded == true" >
+       ng-show="friendAdded" >
         Added
       </button>
       </h2>
